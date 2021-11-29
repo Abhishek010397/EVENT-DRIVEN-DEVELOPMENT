@@ -23,12 +23,11 @@ public class ProductEventHandler {
     }
 
     @EventHandler
-    public void on(ProductAddedEvents productAddedEvents) throws Exception{
+    public void on(ProductAddedEvents productAddedEvents){
         Product product = new Product();
 
         BeanUtils.copyProperties(productAddedEvents,product);
         productRepository.save(product);
-        throw new Exception("Exception Occurred");
     }
     @ExceptionHandler
     public void handle(Exception exception) throws Exception {
